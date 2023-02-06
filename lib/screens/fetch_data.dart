@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_7466_bloc_pattern/bloc_logic/Fetchstate.dart';
-import 'package:task_7466_bloc_pattern/screens/padding_style.dart';
-import 'package:task_7466_bloc_pattern/screens/text_style.dart';
 
 import '../bloc_logic/fetch_bloc.dart';
 import '../bloc_logic/fetch_event.dart';
@@ -51,10 +49,10 @@ class _FullDataState extends State<FullData> {
                               leading: Container(width: 30,height: 30,
                                 decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.lightBlueAccent),
                                 child: Center(
-                                  child: TextUI(state.fetchData[index].id.toString(),Colors.black)),),
-                              trailing: TextUI(state.fetchData[index].albumId.toString(),Colors.lightBlueAccent),
-                              title: PaddingClass(state.fetchData[index].title.toUpperCase(),Colors.purple,FontWeight.bold,FontStyle.normal,TextDecoration.none),
-                              subtitle: PaddingClass(state.fetchData[index].thumbnailUrl,Colors.blue,FontWeight.normal,FontStyle.italic,TextDecoration.underline),
+                                  child: textUI(state.fetchData[index].id.toString(),Colors.black)),),
+                              trailing: textUI(state.fetchData[index].albumId.toString(),Colors.lightBlueAccent),
+                              title: textPadding(state.fetchData[index].title.toUpperCase(),Colors.purple,FontWeight.bold,FontStyle.normal,TextDecoration.none),
+                              subtitle: textPadding(state.fetchData[index].thumbnailUrl,Colors.blue,FontWeight.normal,FontStyle.italic,TextDecoration.underline),
                           )),
                     );
                   });
@@ -64,6 +62,32 @@ class _FullDataState extends State<FullData> {
           },
         ),
       ),
+    );
+  }
+
+  textPadding(String text, Color colorText, FontWeight weight, FontStyle styleText, TextDecoration decorationText) {
+    return Padding(
+      padding:
+      const EdgeInsets.fromLTRB(0, 10, 0, 10),
+      child: Text(
+        text,
+        style: TextStyle(
+            decoration: decorationText,
+            fontSize: 15,
+            color: colorText,
+            fontWeight: weight,
+            fontStyle: styleText),
+      ),
+    );
+  }
+
+  textUI(String text, Color col) {
+    return Text(
+      text,
+      style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+          color: col),
     );
   }
 }
