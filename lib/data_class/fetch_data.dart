@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-List<ModelClass> ModelClassFromJson(String str) => List<ModelClass>.from(json.decode(str).map((x) => ModelClass.fromJson(x)));
+List<FetchUIData> FetchUIDataFromJson(String str) => List<FetchUIData>.from(json.decode(str).map((x) => FetchUIData.fromJson(x)));
 
-String ModelClassToJson(List<ModelClass> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String FetchUIDataToJson(List<FetchUIData> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ModelClass {
-  ModelClass({
+class FetchUIData {
+  FetchUIData({
     required this.albumId,
     required this.id,
     required this.title,
@@ -19,7 +19,7 @@ class ModelClass {
   String url;
   String thumbnailUrl;
 
-  factory ModelClass.fromJson(Map<String, dynamic> json) => ModelClass(
+  factory FetchUIData.fromJson(Map<String, dynamic> json) => FetchUIData(
     albumId: json["albumId"],
     id: json["id"],
     title: json["title"],

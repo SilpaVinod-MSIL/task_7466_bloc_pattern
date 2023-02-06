@@ -1,11 +1,11 @@
-import '../data_class/model_class.dart';
+import '../data_class/fetch_data.dart';
 
 abstract class FetchState {}
 
 class Initial extends FetchState {}
 
 class FetchData extends FetchState {
-  final List<ModelClass> fetchData;
+  final List<FetchUIData> fetchData;
 
   FetchData({
     required this.fetchData,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_7466_bloc_pattern/bloc_logic/Fetchstate.dart';
+import 'package:task_7466_bloc_pattern/screens/padding_style.dart';
+import 'package:task_7466_bloc_pattern/screens/text_style.dart';
 
 import '../bloc_logic/fetch_bloc.dart';
 import '../bloc_logic/fetch_event.dart';
@@ -49,45 +51,11 @@ class _FullDataState extends State<FullData> {
                               leading: Container(width: 30,height: 30,
                                 decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.lightBlueAccent),
                                 child: Center(
-                                  child: Text(
-                                    state.fetchData[index].id.toString(),
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                  ),
-                                ),
-                              ),
-                              trailing: Text(
-                                state.fetchData[index].albumId.toString(),
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.lightBlueAccent),
-                              ),
-                              title: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                                child: Text(
-                                  state.fetchData[index].title.toUpperCase(),
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.purple),
-                                ),
-                              ),
-                              subtitle: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                                child: Text(
-                                  state.fetchData[index].thumbnailUrl,
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                      fontSize: 15,
-                                      color: Colors.blue,
-                                      fontStyle: FontStyle.italic),
-                                ),
-                              ))),
+                                  child: TextUI(state.fetchData[index].id.toString(),Colors.black)),),
+                              trailing: TextUI(state.fetchData[index].albumId.toString(),Colors.lightBlueAccent),
+                              title: PaddingClass(state.fetchData[index].title.toUpperCase(),Colors.purple,FontWeight.bold,FontStyle.normal,TextDecoration.none),
+                              subtitle: PaddingClass(state.fetchData[index].thumbnailUrl,Colors.blue,FontWeight.normal,FontStyle.italic,TextDecoration.underline),
+                          )),
                     );
                   });
             } else {
